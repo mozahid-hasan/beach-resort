@@ -1,45 +1,23 @@
-import logo from './logo.svg'
+import React from 'react'
 import './App.css'
-import Countries from './components/Countries/Countries'
-import { useEffect, useState } from 'react'
-import Country from './components/Country/Country'
+import Home from './pages/Home'
+import Rooms from './pages/Rooms'
+import Error from './pages/Error'
+import SingleRoom from './pages/SingleRoom'
+import { Route, Routes } from 'react-router-dom'
+import Navbar from './component/Navbar'
 
 function App() {
-  //const [countries, setCountries] = useState([])
-  // const getdata = () => {
-  //   fetch('https://restcountries.com/v2/all')
-  //     .then((res) => res.json())
-  //     .then((data) => setCountries(data))
-  // }
-  // useEffect(() => {
-  //   fetch('https://restcountries.com/v2/all')
-  //     .then((res) => res.json())
-  //     .then((data) => setCountries(data))
-  //   console.log('running')
-  // }, [])
-
-  // useEffect( ()
-  //         async () => {
-
-  //         const response = await fetch('https://restcountries.com/v2/all')
-  //         const data = await response.json()
-  //       }
-  // },[]
-  // const [countries, setCountries] = useState([])
-
-  // useEffect(() => {
-  //   const getCountries = async () => {
-  //     const response = await fetch('https://restcountries.com/v2/all')
-  //     const data = await response.json()
-  //     setCountries(data)
-  //   }
-  //   getCountries()
-  // }, [])
-  //console.log(countries)
   return (
-    <div className='App'>
-      <Countries></Countries>
-    </div>
+    <>
+      <Navbar></Navbar>
+      <Routes>
+        <Route path='/' element={<Home></Home>} />
+        <Route path='/rooms' element={<Rooms></Rooms>} />
+        <Route path='/rooms/:slug' element={<SingleRoom></SingleRoom>} />
+        <Route path='*' element={<Error></Error>} />
+      </Routes>
+    </>
   )
 }
 
